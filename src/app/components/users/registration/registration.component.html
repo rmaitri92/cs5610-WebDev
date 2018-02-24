@@ -1,0 +1,47 @@
+<!--<h1>Register</h1>-->
+
+<!--<div *ngIf="errorFlag"-->
+     <!--class="alert alert-danger">-->
+  <!--{{errorMsg}}-->
+
+<!--</div>-->
+
+<!--<label>Username</label>-->
+<!--<input [(ngModel)]="user.username"-->
+       <!--placeholder="alice"/>-->
+<!--<br/>-->
+<!--<label>Password</label>-->
+<!--<input [(ngModel)]="user.password"-->
+       <!--type="password"-->
+       <!--placeholder="1234@###"/>-->
+<!--<br/>-->
+<!--<label>Verify Password</label>-->
+<!--<input [(ngModel)]="v_password"-->
+       <!--type="password"-->
+       <!--placeholder="1234@###"/>-->
+<!--<br/>-->
+<!--<button (click)="register(v_password)">Login</button>-->
+
+<div class="container">
+  <h1>Register</h1>
+  <form (ngSubmit)="register()" #f="ngForm">
+
+    <input [(ngModel)]="username" type="text" class="form-control"id="username" placeholder="Username" />
+
+    <input [(ngModel)]="username" type="text" class="form-control"id="password" placeholder="Password" />
+
+    <input [(ngModel)]="verifyPassword" type="text" class="form-control"id="verificationPassword" placeholder="VerificationPassword" />
+
+    <button class="btn btn-primary btn-block" type = "submit" [disabled]="!f.valid"> Register</button>
+    <button class="btn btn-danger btn-block" (click)="cancel()"> Cancel</button>
+
+    <span class="btn-block" *ngIf="userDuplicateError"
+          class = "alert jasmine-alert" error()>
+      {{userDuplicateErrorMsg}}
+    </span>
+    <span class="btn-block" *ngIf="errorFlag"
+          class = "alert jasmine-alert" error()>
+      {{errorMsg}}
+    </span>
+  </form>
+</div>
